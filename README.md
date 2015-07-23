@@ -1,4 +1,4 @@
-# admm_lasso
+# MPI implementation of an ADMM-based solver for the Lasso problem (python)
 I am trying to rewrite the code on Python. Here is a [link.](http://web.stanford.edu/~boyd/papers/admm/mpi/) 
 
 I have to change makefile slightly because original one doesn't work on my machine.
