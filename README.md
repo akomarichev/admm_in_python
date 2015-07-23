@@ -1,6 +1,21 @@
 # admm_lasso
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
+```makefile
+MPICC=mpicc
+CC=gcc
+CFLAGS=-Wall -std=c99 
+LDFLAGS=-lgsl -lgslcblas -lm
+
+all: lasso
+
+lasso: lasso.o mmio.o
+	$(MPICC) $(CFLAGS) lasso.o mmio.o -o lasso $(LDFLAGS)
+
+lasso.o: lasso.c mmio.o
+	$(MPICC) $(CFLAGS) -c lasso.c
+
+mmio.o: mmio.c
+	$(CC) $(CFLAGS) -c mmio.c
+
+clean:
+	rm -vf *.o lasso
 ```
