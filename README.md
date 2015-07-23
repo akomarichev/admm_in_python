@@ -1,4 +1,5 @@
 # admm_lasso
+I am trying to rewrite the code on Python. Here is a [link.](http://web.stanford.edu/~boyd/papers/admm/mpi/) 
 ```makefile
 MPICC=mpicc
 CC=gcc
