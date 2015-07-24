@@ -3,6 +3,17 @@ import numpy as np
 
 np.random.seed(0)
 
+'''
+    Original matlab code you can find under this link: http://web.stanford.edu/~boyd/papers/admm/basis_pursuit/basis_pursuit.html
+
+    Code solves the following problem:
+        minimize norm(x,1)
+        subject to Ax=b
+
+    Written by Artem Komarichev 
+    Mail: fn9241@wayne.edu
+'''
+
 n = 30
 m = 10
 
