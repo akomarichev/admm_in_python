@@ -60,12 +60,12 @@ def basis_pursuit(A, b, rho, alpha):
         u = u + (x_hat - z)
 
         obj = objective(A, b, x)
-        r_norm = np.linalg.norm(x - z, 1)
-        s_norm = np.linalg.norm(-rho * (z - zold), 1)
+        r_norm = np.linalg.norm(x - z, 2)
+        s_norm = np.linalg.norm(-rho * (z - zold), 2)
 
         eps_pri = np.sqrt(n) * ABSTOL + RELTOL * \
-            max(np.linalg.norm(x, 1), np.linalg.norm(-z, 1))
-        eps_dual = np.sqrt(n) * ABSTOL + RELTOL * np.linalg.norm(rho * u, 1)
+            max(np.linalg.norm(x, 2), np.linalg.norm(-z, 2))
+        eps_dual = np.sqrt(n) * ABSTOL + RELTOL * np.linalg.norm(rho * u, 2)
 
         print '{0}\t{1}\t{2}\t{3}\t{4}\t{5}'.format(k, r_norm, eps_pri, s_norm, eps_dual, obj)
 
