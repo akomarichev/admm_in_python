@@ -10,7 +10,7 @@ A = np.random.rand(m, n)
 x = rand(n, 1, 0.5)
 b = A * x
 
-xtrue = x
+xtrue = x.toarray()
 
 from mpi4py import MPI
 
@@ -102,6 +102,9 @@ def basis_pursuit(A, b, rho, alpha):
 
         if r_norm < eps_pri and s_norm < eps_dual:
             break
+
+    if rank == 0:
+        print 'objective: ', objective(A, b, xtrue)
 
 
 basis_pursuit(A_splitted[rank], b_splitted[rank], 1.0, 1.0)
