@@ -13,7 +13,7 @@ np.random.seed(0)
     Mail: fn9241@wayne.edu
 '''
 
-n = 50
+n = 40
 m = 200
 
 w = rand(n, 1, 0.1)
@@ -116,4 +116,4 @@ def logreg(A, b, mu, rho, alpha):
         if r_norm < eps_pri and s_norm < eps_dual:
             break
 
-logreg(A, b, mu, 1.0, 1.0)
+logreg(A, btrue, mu, 1.0, 1.0)
