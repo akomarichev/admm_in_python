@@ -98,7 +98,7 @@ def logreg(A, b, _lambda, rho, alpha):
                        # method='CG',
                        # jac = gF,
                        # maxiter=25
-                       options={'maxiter': 25}
+                       options={'maxiter': 15}
                        )
         # print res
         #x = np.expand_dims(res[0], axis=1)
@@ -108,7 +108,7 @@ def logreg(A, b, _lambda, rho, alpha):
         zold = np.copy(z)
         x_hat = alpha * x + (1 - alpha) * zold
         # print 'x_hat', x_hat.T
-        z = shrinkage(x_hat + u, (m * 0.0009) / rho)
+        z = shrinkage(x_hat + u, (m * 0.0001) / rho)
 
         # u-update
         u = u + (x_hat - z)
@@ -134,6 +134,7 @@ def logreg(A, b, _lambda, rho, alpha):
 
 all_theta = np.zeros((num_labels, n + 1))
 
+print 'Predictions for numbers: '
 for c in range(0, num_labels):
     if c == 0:
         theta = logreg(X, (y == 10) + 0, _lambda, 1.0, 1.0)
@@ -155,11 +156,7 @@ maxindices[maxindices == 0] = 10
 
 maxindices = np.expand_dims(maxindices, axis=1)
 
-print maxindices.shape
-print y.shape
-
-print y == maxindices
-print 100.0 * np.sum((y == maxindices) + 0) / 5000.0
+print 'accuracy: ', 100.0 * np.sum((y == maxindices) + 0) / 5000.0, '%'
 
 # logreg(
 #     X[random_indecies], (y[random_indecies] == 1) + 0, _lambda, 1.0, 1.0)
